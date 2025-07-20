@@ -1,41 +1,48 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
+ul {
+  list-style: none;
   padding: 0;
-}
-
-body {
-  background-color: #f3f3f3;
-  font-family: sans-serif;
+  margin: 0;
 }
 
 .gallery {
-  height: 100vh;
-  padding: 24px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  list-style: none;
+  padding: 0 15px;
 }
 
 .gallery-item {
+  flex-basis: calc((100% - 48px) / 3);
+  max-height: 400px;
   overflow: hidden;
-  border-radius: 8px;
 }
 
-.gallery-image {
+img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.gallery-image:hover {
+img:hover {
   transform: scale(1.05);
+}
+
+/* Планшети: 2 в ряд */
+@media (max-width: 991px) {
+  .gallery-item {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+}
+
+/* Мобілки: 1 в ряд */
+@media (max-width: 600px) {
+  .gallery-item {
+    flex-basis: 100%;
+  }
 }
